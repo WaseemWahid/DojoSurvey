@@ -14,11 +14,17 @@ namespace DojoSurvey.Controllers
         }
 
         [HttpPost("result")]
-        public IActionResult Result(Survey postData)
+        public IActionResult Result(Survey survey)
         {
+            if(ModelState.IsValid)   
             {
-                return View(postData);
+                return RedirectToAction("result");
             }
+            else
+            {
+                return View("Index");
+            }
+            
             
         }
     }

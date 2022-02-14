@@ -1,3 +1,4 @@
+@using DojoSurvey.Models
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,36 +11,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-        <form action="Result" method="post">
+        @model Survey
+        <form asp-action="Result" asp-controller="Home" method="post">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Your Name:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name='Name' value="">
+            
+            <label for="asp-for">Your Name:</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" asp-for='Name' value="">
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">City</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="City">
+            
+            <label asp-for="City">City</label>
+            <select class="form-control" asp-for="City">
+                <option value=""></option>
                 <option value='San Jose'>San Jose</option>
                 <option value='Chicago'>Chicago</option>
                 <option value='Seattle'>Seattle</option>
                 <option value='Online'>Online</option>
                 <option value='Boise'>Boise</option>
             </select>
+            <span asp-validation-for="City" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Favorite Language</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="Language">
+            
+            <label asp-for="Language">Favorite Language</label>
+            <select class="form-control" asp-for="Language">
+                <option value=""></option>
                 <option value='Python'>Python</option>
                 <option value='Javascript'>Javascript</option>
                 <option value='C#'>C#</option>
                 <option value='HTML'>HTML</option>
                 <option value='CSS'>CSS</option>
             </select>
+            <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comments</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Comments"></textarea>
+            
+            <label asp-for="Comments">Comments</label>
+            <textarea class="form-control"  rows="3" asp-for="Comments"></textarea>
+            <span asp-validation-for="Comments" class="text-danger"></span>
         </div>
-        <input class="btn btn-danger" type="submit" value="Submit">
+        
+        <input class="btn btn-danger" type="submit" value="Add Survey">
     </form>
 </body>
 </html>
